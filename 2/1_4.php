@@ -71,5 +71,6 @@ if (isPrimeNumber($numberToCheck)) {
     echo("<p> The number " . $numberToCheck . " is NOT a prime number!</p>");
 }
 ?>
+
 </body>
 </html>
