@@ -1,5 +1,7 @@
 <!--Formularz rezerwacji hotelu:
-a) stwórz formularz, który będzie pozwalał: podać z listy rozwijanej ilość osób (1-4), których dotyczy rezerwacja, wpisać dane osoby rezerwującej pobyt np. imię, nazwisko, adres, dane karty kredytowej, e-mail, podać datę pobytu, czy godzinę przyjazdu itd. (pamiętając o odpowiedniej walidacji pól - typach), zaznaczyć czy jest potrzeba dostawienia łóżka dla dziecka, z listy wybrać odpowiednie udogodnienia np. klimatyzacja i popielniczka dla palacza (pamiętaj określić które pola są wymagane)
+a) stwórz formularz, który będzie pozwalał: podać z listy rozwijanej ilość osób (1-4), których dotyczy rezerwacja, wpisać dane osoby rezerwującej pobyt
+np. imię, nazwisko, adres, dane karty kredytowej, e-mail, podać datę pobytu, czy godzinę przyjazdu itd. (pamiętając o odpowiedniej walidacji pól - typach),
+zaznaczyć czy jest potrzeba dostawienia łóżka dla dziecka, z listy wybrać odpowiednie udogodnienia np. klimatyzacja i popielniczka dla palacza (pamiętaj określić które pola są wymagane)
 b) stwórz skrypt PHP, który odbierze powyższe dane i w ładny i przejrzysty sposób wyświetli podsumowanie rezerwacji (użyć do wyświetlenia szablonu HTML
 Dla zadania nr 2 dodaj krok, w którym w zależności od liczby osób wyświetli się formularz, który pozwoli uzupełnić podstawowe dane tych osób w zgrupowanych formularzach i doda tę informację do podsumowania rezerwacji.-->
 
@@ -8,23 +10,23 @@ Dla zadania nr 2 dodaj krok, w którym w zależności od liczby osób wyświetli
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zad 2 i 3 Warsztat 2</title>
+    <title>zad 2,3 zjazd 2</title>
     <style>
         body {
-            background: #2f9149;
-            color: #FFF;
+            background: lightblue;
+            color: black;
         }
     </style>
 </head>
 <body>
 <header>
-    <h2> Welcome to Plaza Hotel !</h2>
+    <h2> Make reservation in out hotel</h2>
 </header>
 
 <?php
 echo('	
 		<article>
-			<form action="2,3 - 1_2.php" method="POST">
+			<form action="1_2_3.php" method="POST">
 				<label>Select number of people: </label>
 				<select name="NumberOfPeople">
 				  <option value=1>1</option>
@@ -42,34 +44,34 @@ if(isset($_POST['NumberOfPeople'])) {
 
     function numberOfForms($peopleNumber) {
         echo ('
-			<form action="2,3 - 1_2.php" method="POST">
+			<form action="1_2_3.php" method="POST">
 				<input type="hidden" value="'.$peopleNumber.'" name="peopleNumber" />
 				<br>
-				<label>Input First Name:</label>
+				<label>First Name:</label>
 				<input type="text" name="firstName0" placeholder="First Name" required>
 				<br>
-				<label>Input Last Name:</label>
+				<label>Last Name:</label>
 				<input type="text" name="lastName0" placeholder="Last Name" required>
 				<br>
-				<label>Input Email adress:</label>
+				<label>Email adress:</label>
 				<input type="email" name="email0" placeholder="Email" required>
 				<br>
-				<label>Input Adress:</label> 
+				<label>Adres:</label> 
 				<input type="text" name="adress0" placeholder="Address">
 				<br>
-				<label>Input Credit Card Number:</label> 
+				<label>Credit Card Number</label> 
 				<input type="tel" inputmode="numeric" name="CardNumber" pattern="[0-9\s]{13,19}" autocomplete="CreditCard-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
 				<br>
-				<label>Input Card Valid To Date:</label>
+				<label>Credit card valid date</label>
 				<input type="month" min="2021-05" value="2021-05" name="CardValidationDate" required>
 				<br>
-				<label>Input Check in:</label>
+				<label>Check in</label>
 				<input type="datetime-local" min="2021-04-19T00:00" value="2021-04-19T12:30" name="CheckInDateTime" required>
 				<br>
-				<label>Input Check out:</label>
-				<input type="datetime-local" min="2021-04-21T00:00" value="2021-04-21T00:00" name="CheckOutDateTime" required>
+				<label>Days to stay</label>
+				<input type="int" name="numberOfDays" required>
 				<br>
-				<label>Do you need bed for a child: </label>
+				<label>Bed for a child </label>
 				<label for=ExtraBedNo> No </label>
 				<input type="radio" id="ExtraBedNo" name="ExtraChildBed value="No" checked>
 				<label for=ExtraBedYes> Yes </label>
@@ -77,23 +79,17 @@ if(isset($_POST['NumberOfPeople'])) {
 				<br>
 				<label> Extras: </label>
 				<br>
-				<input type="checkbox" id="AirConditioning" name="AirConditioning" value="AirConditioning">
-				<label for="AirConditioning"> Air Conditioning</label><br>
-				
 				<input type="checkbox" id="MiniBar" name="MiniBar" value="MiniBar">
 				<label for="MiniBar"> Mini Bar</label><br>
 				
-				<input type="checkbox" id="BirthdayPackage" name="BirthdayPackage" value="BirthdayPackage">
-				<label for="BirthdayPackage"> Birthday Package</label><br>
+				<input type="checkbox" id="AirCondition" name="AirCondition" value="AirCondition">
+				<label for="AirCondition"> Air Condition</label><br>
+								
+				<input type="checkbox" id="balcony" name="balcony" value="balcony">
+				<label for="balcony"> Balcony</label><br>
 				
-				<input type="checkbox" id="ValentinesDayPackage" name="ValentinesDayPackage" value="ValentinesDayPackage">
-				<label for="ValentinesDayPackage"> Valentines Day Package</label><br>
-				
-				<input type="checkbox" id="101JokesOnYouBook" name="101JokesOnYouBook" value="101JokesOnYouBook">
-				<label for="101JokesOnYouBook"> 101 Jokes On You Book</label><br>
-				
-				<input type="checkbox" id="AdultTvChannels" name="AdultTvChannels" value="AdultTvChannels">
-				<label for="AdultTvChannels"> Adult Tv Channels</label><br><br>
+				<input type="checkbox" id="TV" name="TV" value="TV">
+				<label for="TV"> TV</label><br><br>
 				
 				
 				');
@@ -129,40 +125,30 @@ if(isset($_POST['NumberOfPeople'])) {
             echo ('<h3> Person: '. $_POST['firstName'.$i].' '.$_POST['lastName'.$i]. '</h3>');
 
             if($i==0) {
-                echo 'Address: ' . $_POST['address'.$i] . '<br>';
+                echo 'Address: ' . $_POST['adress'.$i] . '<br>';
                 echo 'Credit card: ' . $_POST['CardNumber'] . '<br>';
                 echo 'Email: ' . $_POST['email'.$i] . '<br>';
                 echo 'Arrival: ' . $_POST['CheckInDateTime'] . '<br>';
-                echo 'Check-Out: '. $_POST['CheckOutDateTime']. '<br>';
-                if (isset($_POST['AirConditioning'])) {
-                    echo 'Air Conditioning?: Yes<br>';
-                } else {
-                    echo 'Air Conditioning?: No<br>';
-                }
+
                 if (isset($_POST['MiniBar'])) {
-                    echo 'Mini Bar?: Yes<br>';
+                    echo 'Mini Bar: Yes<br>';
                 } else {
-                    echo 'Mini Bar?: No<br>';
+                    echo 'Mini Bar: No<br>';
                 }
-                if (isset($_POST['BirthdayPackage'])) {
-                    echo 'Birthday Package?: Yes<br>';
+                if (isset($_POST['balcony'])) {
+                    echo 'Balcony: Yes<br>';
                 } else {
-                    echo 'Birthday Package?: No<br>';
+                    echo 'Balcony: No<br>';
                 }
-                if (isset($_POST['ValentinesDayPackage'])) {
-                    echo 'ValentinesDay Package?: Yes<br>';
+                if (isset($_POST['AirCondition'])) {
+                    echo 'Air Conditioning: Yes<br>';
                 } else {
-                    echo 'ValentinesDay Package?: No<br>';
+                    echo 'Air Conditioning: No<br>';
                 }
-                if (isset($_POST['101JokesOnYouBook'])) {
-                    echo '101 Jokes On You Book?: Yes<br>';
+                if (isset($_POST['TV'])) {
+                    echo 'Tv: Yes<br>';
                 } else {
-                    echo '101 Jokes On You Book?: No<br>';
-                }
-                if (isset($_POST['AdultTvChannels'])) {
-                    echo 'Adult Tv Channels?: Yes<br>';
-                } else {
-                    echo 'Adult Tv Channels?: No<br>';
+                    echo 'Tv: No<br>';
                 }
             } else {
                 echo 'Email: ' . $_POST['email'.$i] . '<br>';
