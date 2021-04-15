@@ -1,3 +1,7 @@
+<!-- 1. Prosty kalkulator:
+    a. stwórz formularz z miejscem na wpisanie 2 liczb oraz wyborem działania (dodawanie, odejmowanie, mnożenie, dzielenie)
+    b. stwórz skrypt PHP, który obsłuży dane z formularza (na podstawie wybranego działania policzy i wyświetli wynik w przeglądarce)-->
+
 <!doctype html>
 <html>
 <body>
@@ -12,7 +16,7 @@
     </select>
     <input type="submit">
 </form>
-
+</body>
 <?php
 $numberOne = $_POST["numberOne"];
 $numberTwo = $_POST["numberTwo"];
