@@ -57,20 +57,3 @@ function isPrimeNumber($numberToCheck)
             break;
         }
     }
-
-    if ($x == $i - 1) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-if (isPrimeNumber($numberToCheck)) {
-    echo("<p> The number " . $numberToCheck . " is a prime number!</p>");
-} else {
-    echo("<p> The number " . $numberToCheck . " is NOT a prime number!</p>");
-}
-?>
-
-</body>
-</html>
