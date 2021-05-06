@@ -5,8 +5,6 @@
     c) główny skrypt zawierał tylko switcha, a w nim wywołanie odpowiedniej funkcji
     d) (trzeba użyć include()/require() by korzystać z funkcji z innego pliku)-->
 
-
-
 <!doctype html>
 <html>
 <body>
