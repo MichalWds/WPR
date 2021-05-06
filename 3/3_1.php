@@ -5,76 +5,42 @@
     c) główny skrypt zawierał tylko switcha, a w nim wywołanie odpowiedniej funkcji
     d) (trzeba użyć include()/require() by korzystać z funkcji z innego pliku)-->
 
-
-<html lang="en">
+<!doctype html>
+<html>
 <body>
-<form action="1.php" method="post">
-    <label>
-        <tr>
-            <td>First number:</td>
-            <td><input name="a"/></td>
-            <br>
-        </tr
-        <tr>
-            <td>Second number:</td>
-            <td><input name="b"/></td>
-            <br>
-        </tr>
-        <tr>
-            <td>Choose action:</td>
-            <td><select name="action">
-                    <option value="+">Addition</option>
-                    <option value="-">Subtraction</option>
-                    <option value="*">Multiplication</option>
-                    <option value="/">Division</option>
-                </select>
-            </td>
-            <br>
-        </tr>
-        <tr>
-            <td><input type="submit" value="SEND"/></td>
-        </tr>
-    </label>
+<form action="3_1.php" method="POST">
+    Num1: <input type="number" name="numberOne">
+    Num2: <input type="number" name="numberTwo">
+    <select name="actionNumber">
+        <option value="add">Add</option>
+        <option value="sub">Subtract</option>
+        <option value="mul">Multiply</option>
+        <option value="div">Divide</option>
+    </select>
+    <input type="submit">
 </form>
-
-<?php
-if (isset($_POST["a"]) && isset($_POST["b"]) && isset($_POST["action"])) {
-    $a = $_POST["a"];
-    $b = $_POST["b"];
-    $action = $_POST["action"];
-
-    switch ($action) {
-        case "+":
-        {
-            require '3_1_2.php';
-            addition($a, $b);
-            break;
-        }
-        case "-":
-        {
-            require '3_1_2.php';
-            subtraction($a, $b);
-            break;
-        }
-        case "*":
-        {
-            require '3_1_2.php';
-            multiplication($a, $b);
-            break;
-        }
-        case "/":
-        {
-            require '3_1_2.php';
-            if ($b != 0) {
-                division($a, $b);
-            } else {
-                echo "Can not division by 0 !";
-            }
-            break;
-        }
-    }
-}
-
-?>
 </body>
-</html>
+<?php
+$numberOne = $_POST["numberOne"];
+$numberTwo = $_POST["numberTwo"];
+
+if ($_POST['actionNumber'] == "add") {
+    require '3_1_2.php';
+    echo "Wynik: " . ($numberOne + $numberTwo);
+}
+if ($_POST['actionNumber'] == "sub") {
+    require '3_1_2.php';
+    echo "Wynik: " . ($numberOne - $numberTwo);
+}
+if ($_POST['actionNumber'] == "mul") {
+    require '3_1_2.php';
+    echo "Wynik: " . ($numberOne * $numberTwo);
+}
+if ($_POST['actionNumber'] == "div") {
+    if ($numberTwo == 0) {
+        require '3_1_2.php';
+        echo "Kolego, nigdy nie dziel przez zero!";
+    }
+    echo "Wynik: " . ($numberOne / $numberTwo);
+}
+?>

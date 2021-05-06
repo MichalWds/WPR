@@ -6,7 +6,9 @@
 
 <html lang="en">
 <body>
-<form action="2.php" method="post">
+
+<form action="3_2.php" method="post">
+
     <label>
         <tr>
             <td>What is your name ?*</td>

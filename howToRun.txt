@@ -1,0 +1,10 @@
+cd into correct file and use script
+php -S localhost:8000
+
+for example
+in \Projects\WPR\3
+use 3_3.php -S localhost:8000
+
+
+
+C:\Users\mawd\OneDrive - GFT Technologies SE\Documents\Ampps\www
