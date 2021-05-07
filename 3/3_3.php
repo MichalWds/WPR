@@ -10,8 +10,8 @@
 <form action="3_3.php" method="post">
     <label>
         <tr>
-            <td>Hotel reservation<br><br></td>
-            <td>How many people ?*</td>
+            <td>Make reservation in out hotel<br><br></td>
+            <td>Select Number of people:</td>
             <td><select name="people" required>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -22,68 +22,55 @@
             <br>
         </tr>
         <tr>
-            <td>What is your name ?*</td>
+            <td>First Name:</td>
             <td><input type="text" name="name" required></td>
             <br>
         </tr>
         <tr>
-            <td>What is your lastname ?*</td>
+            <td>Last Name:</td>
             <td><input type="text" name="lastName" required></td>
             <br>
         </tr>
         <tr>
-            <td>What is your address ?</td>
-            <td><input type="text" name="address" size="60"></td>
-            <br>
-        </tr>
-        <tr>
-            <td>What is your phone number ?*</td>
-            <td><input type="text" name="phoneNumber" required></td>
-            <br>
-        </tr>
-        <tr>
-            <td>What is your email address ?*</td>
+            <td>Email address:</td>
             <td><input type="email" name="emailAddress" required></td>
             <br>
         </tr>
         <tr>
-            <td>Reservation since*</td>
-            <td><input type="date" name="reservationSince" required></td>
+            <td>Address:</td>
+            <td><input type="text" name="address" size="60"></td>
             <br>
         </tr>
         <tr>
-            <td>Reservation to*</td>
-            <td><input type="date" name="reservationTo" required></td>
+            <td>Check In:</td>
+            <td><input type="date" name="checkIn" required></td>
             <br>
         </tr>
         <tr>
-            <td>Time of arrival</td>
-            <td><input type="time" name="arrival"></td>
+            <td>Check out:</td>
+            <td><input type="date" name="checkOut" required></td>
             <br>
         </tr>
-        <tr>
-            <td><input type="submit" value="SEND"/></td>
+        <td><input type="submit" value="SEND"/></td>
         </tr>
     </label>
 </form>
 
 <?php
 if (isset($_POST["people"]) && isset($_POST["name"]) && isset($_POST["lastName"]) &&
-    isset($_POST["phoneNumber"]) && isset($_POST["reservationSince"]) && isset($_POST["reservationTo"])) {
+    isset($_POST["checkIn"]) && isset($_POST["checkOut"])) {
     $people = $_POST["people"];
     $name = $_POST["name"];
     $lastName = $_POST["lastName"];
-    $address = $_POST["address"];
-    $phoneNumber = $_POST["phoneNumber"];
     $emailAddress = $_POST["emailAddress"];
-    $reservationSince = $_POST["reservationSince"];
-    $reservationTo = $_POST["reservationTo"];
-    $arrival = $_POST["arrival"];
+    $address = $_POST["address"];
+    $checkIn = $_POST["checkIn"];
+    $checkOut = $_POST["checkOut"];
 
-    $data = array($people, $name, $lastName, $address, $phoneNumber, $emailAddress, $reservationSince, $reservationTo, $arrival);
+    $data = array($people, $name, $lastName, $address, $emailAddress, $checkIn, $checkOut);
 
-    if (!$fp = fopen('3.csv', 'a')) {
-        echo "Can not open 3.csv file";
+    if (!$fp = fopen('result.csv', 'a')) {
+        echo "Can not open file with data.";
     } else {
         fputcsv($fp, $data);
         fclose($fp);
@@ -105,7 +92,7 @@ if (isset($_POST["people"]) && isset($_POST["name"]) && isset($_POST["lastName"]
 
 <?php
 if (isset($_POST["results"])) {
-    if (($handle = fopen("3.csv", "r")) !== FALSE) {
+    if (($handle = fopen("result.csv", "r")) !== FALSE) {
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $num = count($data);
             echo "<br />";

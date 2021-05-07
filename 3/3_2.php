@@ -11,17 +11,17 @@
 
     <label>
         <tr>
-            <td>What is your name ?*</td>
+            <td>Fill in your name</td>
             <td><input type="text" name="name" required></td>
             <br>
         </tr>
         <tr>
-            <td>What is your lastname ?*</td>
+            <td>Fill in your last name</td>
             <td><input type="text" name="lastName" required></td>
             <br>
         </tr>
         <tr>
-            <td><textarea name="comment" cols="50" rows="5">Your comment</textarea></td>
+            <td><textarea name="comment" cols="50" rows="10" placeholder="Fill in your comments"></textarea></td>
             <br>
         </tr>
         <tr>
@@ -36,10 +36,10 @@ if (isset($_POST["name"]) && isset($_POST["lastName"])) {
     $lastName = $_POST["lastName"];
     $comment = $_POST["comment"];
 
-    if (file_put_contents('2.txt', $name . "\n" . $lastName . "\n" . $comment . "\n", FILE_APPEND) === false) {
-        echo "Error. Data not saved.";
+    if (file_put_contents('savedData.txt', $name . "\n" . $lastName . "\n" . $comment . "\n", FILE_APPEND) === false) {
+        echo "Data not saved.";
     } else {
-        echo "Thank you. Data saved.";
+        echo "Data saved.";
     }
 }
 ?>
